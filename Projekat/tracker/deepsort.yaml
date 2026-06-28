@@ -1,0 +1,26 @@
+max_age: 90
+
+n_init: 3
+
+max_cosine_distance: 0.5
+
+max_iou_distance: 0.7
+
+nn_budget: null
+
+embedder: "mobilenet"
+
+embedder_gpu: false
+
+# Suppress a notification if a sign of the SAME class was active within this many
+# seconds. Guards against DeepSORT re-acquiring the same physical sign under a new
+# track_id (brief occlusion / motion blur) and firing a duplicate notification.
+class_cooldown_seconds: 2.5
+
+# Ignore detections whose bounding box is smaller than this many pixels on its
+# shorter side (measured on the inference frame, which the app standardizes to
+# 640px wide). Far/pixelated signs are dropped before they reach the tracker, so
+# we only start tracking — and only classify/notify — once a sign is close enough
+# to be legible. Raising it trades earlier alerts for fewer misclassifications.
+# Set to 0 to disable.
+min_box_size: 16
